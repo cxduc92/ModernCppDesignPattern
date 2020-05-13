@@ -11,6 +11,7 @@ RM := rm -rf
 -include src/StruturalPattern/subdir.mk
 -include src/DesignPrinciple/subdir.mk
 -include src/CreationalPattern/subdir.mk
+-include src/BehavioralPattern/subdir.mk
 -include subdir.mk
 -include objects.mk
 

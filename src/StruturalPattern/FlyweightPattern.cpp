@@ -122,7 +122,8 @@
 //  //cout << (&jane_doe.last_name == &john_doe.last_name);
 //}
 
-int main(int argc, char *argv[])
+int runFlyweightPattern()
+//int main(int argc, char *argv[])
 {
 //  naive_flyweight();
 //  boost_flyweight();

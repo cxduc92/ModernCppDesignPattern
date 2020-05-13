@@ -9,7 +9,8 @@ CPP_SRCS += \
 ../src/StruturalPattern/CompositePattern.cpp \
 ../src/StruturalPattern/DecoratorPattern.cpp \
 ../src/StruturalPattern/FacadePattern.cpp \
-../src/StruturalPattern/FlyweightPattern.cpp 
+../src/StruturalPattern/FlyweightPattern.cpp \
+../src/StruturalPattern/ProxyPattern.cpp 
 
 OBJS += \
 ./src/StruturalPattern/AdapterPattern.o \
@@ -17,7 +18,8 @@ OBJS += \
 ./src/StruturalPattern/CompositePattern.o \
 ./src/StruturalPattern/DecoratorPattern.o \
 ./src/StruturalPattern/FacadePattern.o \
-./src/StruturalPattern/FlyweightPattern.o 
+./src/StruturalPattern/FlyweightPattern.o \
+./src/StruturalPattern/ProxyPattern.o 
 
 CPP_DEPS += \
 ./src/StruturalPattern/AdapterPattern.d \
@@ -25,7 +27,8 @@ CPP_DEPS += \
 ./src/StruturalPattern/CompositePattern.d \
 ./src/StruturalPattern/DecoratorPattern.d \
 ./src/StruturalPattern/FacadePattern.d \
-./src/StruturalPattern/FlyweightPattern.d 
+./src/StruturalPattern/FlyweightPattern.d \
+./src/StruturalPattern/ProxyPattern.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
