@@ -33,7 +33,7 @@ class Rectangle
 
         int area() const
         {
-            return m_height*m_width;
+            return m_height * m_width;
         }
 
         int getWidth() const
@@ -60,7 +60,10 @@ class Rectangle
 class Square: public Rectangle
 {
     public:
-        Square(int size): Rectangle(size,size){}
+        Square(int size) :
+                        Rectangle(size, size)
+        {
+        }
         void setWidth(int width) override
         {
             this->m_width = this->m_height = width;
@@ -72,13 +75,13 @@ class Square: public Rectangle
         }
 };
 
-void process(Rectangle& r)
+void process(Rectangle &r)
 {
     int w = r.getWidth();
     r.setHeight(10);
 
-    std::cout << "expected area = " << (w*10)
-                    << ", got " << r.area()<< std::endl;
+    std::cout << "expected area = " << (w * 10)
+                    << ", got " << r.area() << std::endl;
 }
 
 struct RectangleFactory
@@ -90,10 +93,12 @@ struct RectangleFactory
 //int main(int argc, char *argv[])
 int runLiskoSubstitutionPrinciple()
 {
-    Rectangle r{3,4};
+    Rectangle r
+    { 3, 4 };
     process(r);
 
-    Square sq{5};
+    Square sq
+    { 5 };
     process(sq);
     return 0;
 }

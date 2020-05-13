@@ -25,9 +25,9 @@
 
 enum class Relationship
 {
-        parent,
-        child,
-        sibling
+    parent,
+    child,
+    sibling
 };
 
 struct Person
@@ -38,14 +38,14 @@ struct Person
 // abstraction level or intefaces
 struct RelationshipBrowser
 {
-        virtual std::vector<Person> find_all_children_of(const std::string& name) = 0;
+        virtual std::vector<Person> find_all_children_of(const std::string &name) = 0;
 };
 
-struct Relationships:RelationshipBrowser // low-level construct
+struct Relationships: RelationshipBrowser // low-level construct
 {
-        std::vector<std::tuple<Person,Relationship,Person>> relations;
+        std::vector<std::tuple<Person, Relationship, Person>> relations;
 
-        void add_parent_and_child(const Person& parent, const Person& child)
+        void add_parent_and_child(const Person &parent, const Person &child)
         {
             //relations.push_back(std::tuple{parent,Relationship::parent,child});
             //relations.push_back({child,Relationship::child,parent});
@@ -54,7 +54,7 @@ struct Relationships:RelationshipBrowser // low-level construct
 
 struct Research // high-level
 {
-        Research(Relationships& relationship)
+        Research(Relationships &relationship)
         {
 //            auto & relations = relationship.relations;
 //            for(auto&& [first,rel,second] : relations)
@@ -70,8 +70,11 @@ struct Research // high-level
 //int main(int argc, char *argv[])
 int runDependencyInversionPrinciple()
 {
-    Person parent{"John"};
-    Person child1{"Chris"},child2{"Matt"};
+    Person parent
+    { "John" };
+    Person child1
+    { "Chris" }, child2
+    { "Matt" };
 
 //    Relationships relationships;
 //    relationships.add_parent_and_child(parent,child1);

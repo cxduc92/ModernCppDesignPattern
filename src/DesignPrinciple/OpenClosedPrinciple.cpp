@@ -86,76 +86,89 @@ template<typename T> struct Filter
 
 struct BetterFilter: Filter<Product>
 {
-        std::vector<Product *> filter(std::vector<Product*> items, Specification<Product> &spec) override
+        std::vector<Product*> filter(std::vector<Product*> items, Specification<Product> &spec) override
         {
             std::vector<Product*> result;
-            for(auto& item: items)
-                if(spec.is_satisfied(item))
+            for (auto &item : items)
+                if (spec.is_satisfied(item))
                     result.push_back(item);
             return result;
         }
 };
 
-struct ColorSpecification:Specification<Product>
+struct ColorSpecification: Specification<Product>
 {
-    Color color;
-    ColorSpecification(Color color): color(color){}
+        Color color;
+        ColorSpecification(Color color) :
+                        color(color)
+        {
+        }
 
-    bool is_satisfied(Product *item) override
-    {
-        return item->color == color;
-    }
+        bool is_satisfied(Product *item) override
+        {
+            return item->color == color;
+        }
 };
 
-struct SizeSpecification:Specification<Product>
+struct SizeSpecification: Specification<Product>
 {
-    Size size;
-    SizeSpecification(Size size): size(size){}
+        Size size;
+        SizeSpecification(Size size) :
+                        size(size)
+        {
+        }
 
-    bool is_satisfied(Product *item) override
-    {
-        return item->size == size;
-    }
+        bool is_satisfied(Product *item) override
+        {
+            return item->size == size;
+        }
 };
 
-template <typename T> struct AndSpecification: Specification<T>
+template<typename T> struct AndSpecification: Specification<T>
 {
-    Specification<T>& first;
-    Specification<T>& second;
-    AndSpecification(Specification<T> &first,
-                    Specification<T> &second) : first(first), second(second){}
+        Specification<T> &first;
+        Specification<T> &second;
+        AndSpecification(Specification<T> &first,
+                        Specification<T> &second) :
+                        first(first), second(second)
+        {
+        }
 
-    bool is_satisfied(T *item) override
-    {
-        return first.is_satisfied(item) && second.is_satisfied(item);
-    }
+        bool is_satisfied(T *item) override
+        {
+            return first.is_satisfied(item) && second.is_satisfied(item);
+        }
 };
 
-int main(int argc, char *argv[])
-//int runOpenClosedPrinciple()
+//int main(int argc, char *argv[])
+int runOpenClosedPrinciple()
 {
-    Product apple { "Apple", Color::green, Size::small };
-    Product tree { "Tree", Color::green, Size::large };
-    Product house { "House", Color::blue, Size::large };
+    Product apple
+    { "Apple", Color::green, Size::small };
+    Product tree
+    { "Tree", Color::green, Size::large };
+    Product house
+    { "House", Color::blue, Size::large };
 
-    std::vector<Product*> items { &apple, &tree, &house };
+    std::vector<Product*> items
+    { &apple, &tree, &house };
 
     ProductFilter pf;
 
     BetterFilter bf;
     ColorSpecification green(Color::green);
     SizeSpecification large(Size::large);
-    AndSpecification<Product> green_and_large(green,large);
+    AndSpecification<Product> green_and_large(green, large);
 
     auto green_stuff = pf.by_color(items, Color::green);
     for (auto &item : green_stuff)
-        std::cout<< "product filter:" << item->name << " is green \n";
+        std::cout << "product filter:" << item->name << " is green \n";
 
-    for (auto& item:bf.filter(items,green))
-        std::cout<< "better filter:" << item->name << " is green\n";
+    for (auto &item : bf.filter(items, green))
+        std::cout << "better filter:" << item->name << " is green\n";
 
-    for (auto& item:bf.filter(items,green_and_large))
-            std::cout<< "better filter:" << item->name << " is green and large\n";
+    for (auto &item : bf.filter(items, green_and_large))
+        std::cout << "better filter:" << item->name << " is green and large\n";
     return 0;
 }
 

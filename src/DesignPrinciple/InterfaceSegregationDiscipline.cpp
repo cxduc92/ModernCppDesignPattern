@@ -83,7 +83,7 @@ struct IFax
 };
 
 // if we would like to implement the function for the printer
-struct Printer : IPrinter
+struct Printer: IPrinter
 {
         void print(Document &doc) override
         {
@@ -92,29 +92,34 @@ struct Printer : IPrinter
 };
 
 // interface for machine could do printing and scanning
-struct IMachine : IPrinter, IScanner {};
-
-struct Machine:IMachine
+struct IMachine: IPrinter, IScanner
 {
-    IPrinter& printer;
-    IScanner& scanner;
-
-    Machine(IPrinter &printer, IScanner &scanner): printer(printer), scanner(scanner){}
-
-    void print(Document &doc) override
-    {
-        // print
-        printer.print(doc);
-    }
-
-    void scan(Document &doc) override
-    {
-        //scan
-        scanner.scan(doc);
-    }
 };
 
-struct Scanner:IScanner
+struct Machine: IMachine
+{
+        IPrinter &printer;
+        IScanner &scanner;
+
+        Machine(IPrinter &printer, IScanner &scanner) :
+                        printer(printer), scanner(scanner)
+        {
+        }
+
+        void print(Document &doc) override
+        {
+            // print
+            printer.print(doc);
+        }
+
+        void scan(Document &doc) override
+        {
+            //scan
+            scanner.scan(doc);
+        }
+};
+
+struct Scanner: IScanner
 {
         void scan(Document &doc) override
         {
