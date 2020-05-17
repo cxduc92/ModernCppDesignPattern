@@ -76,7 +76,9 @@ struct BankAccountCommand : Command
             }
         }
 };
-int main(int argc, char *argv[])
+
+int runCommandPattern()
+//int main(int argc, char *argv[])
 {
     BankAccount ba;
 
@@ -91,7 +93,6 @@ int main(int argc, char *argv[])
     for (auto& cmd: commands)
         cmd.call();
     cout << ba << endl;
-
     return 0;
 }
 

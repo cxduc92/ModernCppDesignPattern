@@ -24,6 +24,7 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 src/BehavioralPattern \
+src/BehavioralPattern/MediatorPattern \
 src/CreationalPattern \
 src/DesignPrinciple \
 src/StruturalPattern \
